@@ -102,20 +102,20 @@ def trained(countt):
 
 def api1(path):
 
-  url = 'https://app.nanonets.com/api/v2/OCR/Model/7d2e071a-29b0-48d4-a34e-7354d2d58178/LabelFile/'
+  url = ''
 
   data = {'file': open(path, 'rb')}
 
-  response = requests.post(url, auth=requests.auth.HTTPBasicAuth('HNnO_p_ysP5J29iLykMr7eJ16XDhGeD8', ''), files=data)
+  response = requests.post(url, auth=requests.auth.HTTPBasicAuth('', ''), files=data)
 
   return response
 
 def api2(path):
-  url = 'https://app.nanonets.com/api/v2/OCR/Model/bf072bd0-a26c-4d3c-9c8f-94be8bd3b363/LabelFile/'
+  url = ''
 
   data = {'file': open(path, 'rb')}
 
-  response = requests.post(url, auth=requests.auth.HTTPBasicAuth('HNnO_p_ysP5J29iLykMr7eJ16XDhGeD8', ''), files=data)
+  response = requests.post(url, auth=requests.auth.HTTPBasicAuth('', ''), files=data)
 
   return response
 
@@ -127,7 +127,7 @@ def classify_and_analyze(path):
   features=extract_features('a1.jpg')
   
   u = AnnoyIndex(4096, 'euclidean')
-  u.load('Flipkart.ann') # super fast, will just mmap the file
+  u.load('') # super fast, will just mmap the file
   ans1=map_main[map[u.get_nns_by_vector(features, 1)[0]]]
   typee=mp[int(ans1)]
   #print(typee)
@@ -152,7 +152,7 @@ def train_siftt(link,countt):
 def extract_tab(link):
   import json
   from ExtractTable import ExtractTable
-  et_sess = ExtractTable(api_key='uOJM87J9yI5EtrXbGpLnLZaOxFSzxmj2dPwqYlLc')        # Replace your VALID API Key here
+  et_sess = ExtractTable(api_key='')        # Replace your VALID API Key here
   #print(et_sess.check_usage())  
   import pandas as pd
   table_data = et_sess.process_file(filepath=link, output_format="df")
